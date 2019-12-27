@@ -1,0 +1,23 @@
+{
+    "name": "niels-nijens/sculpin-webpack-encore-bundle",
+    "description": "Sculpin integration with Webpack Encore!",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Niels Nijens",
+            "email": "nijens.niels@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nijens\\SculpinWebpackEncoreBundle\\": "src/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
