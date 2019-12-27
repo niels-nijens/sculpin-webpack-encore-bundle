@@ -7,8 +7,6 @@
     <services>
         <defaults public="false"/>
 
-        <service id="cache.system" class="Symfony\Component\Cache\Adapter\AdapterInterface"/>
-
         <service id="assets.packages" alias="nijens_sculpin_webpack_encore.assets.packages"/>
 
         <service id="nijens_sculpin_webpack_encore.assets.packages" class="Symfony\Component\Asset\Packages">

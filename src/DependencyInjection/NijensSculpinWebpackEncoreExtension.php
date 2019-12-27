@@ -56,5 +56,7 @@ final class NijensSculpinWebpackEncoreExtension extends Extension
     {
         $webpackExtension = new WebpackEncoreExtension();
         $webpackExtension->load([$config], $container);
+
+        $container->removeDefinition('cache.webpack_encore');
     }
 }
