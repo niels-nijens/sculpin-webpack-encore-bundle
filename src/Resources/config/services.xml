@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <defaults public="false"/>
+
+        <service id="cache.system" class="Symfony\Component\Cache\Adapter\AdapterInterface"/>
+
+        <service id="assets.packages" alias="nijens_sculpin_webpack_encore.assets.packages"/>
+
+        <service id="nijens_sculpin_webpack_encore.assets.packages" class="Symfony\Component\Asset\Packages">
+            <argument type="service" id="nijens_sculpin_webpack_encore.assets.manifest_package"/>
+            <argument type="collection">
+                <argument type="service" id="nijens_sculpin_webpack_encore.assets.manifest_package"/>
+            </argument>
+        </service>
+
+        <service id="nijens_sculpin_webpack_encore.assets.manifest_package" class="Symfony\Component\Asset\PathPackage">
+            <argument>%nijens_sculpin_webpack_encore.assets.manifest_base_path%</argument>
+            <argument type="service" id="nijens_sculpin_webpack_encore.assets.json_manifest_version_strategy"/>
+        </service>
+
+        <service id="nijens_sculpin_webpack_encore.assets.json_manifest_version_strategy" class="Symfony\Component\Asset\VersionStrategy\JsonManifestVersionStrategy">
+            <argument>%nijens_sculpin_webpack_encore.assets.manifest%</argument>
+        </service>
+
+        <service id="nijens_sculpin_webpack_encore.event_subscriber.reset_services" class="Nijens\SculpinWebPackEncoreBundle\EventSubscriber\ResetServicesEventSubscriber">
+            <argument type="tagged_iterator" tag="kernel.reset"/>
+        </service>
+
+        <service id="nijens_sculpin_webpack_encore.twig.extension.assets" class="Symfony\Bridge\Twig\Extension\AssetExtension">
+            <argument type="service" id="nijens_sculpin_webpack_encore.assets.packages"/>
+
+            <tag name="twig.extension"/>
+        </service>
+    </services>
+</container>
