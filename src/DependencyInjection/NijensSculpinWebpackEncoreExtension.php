@@ -40,6 +40,8 @@ final class NijensSculpinWebpackEncoreExtension extends Extension
         $manifestFile = $config['output_path'].'/manifest.json';
         if (isset($config['assets']['json_manifest_path'])) {
             $manifestFile = $config['assets']['json_manifest_path'];
+
+            unset($config['assets']);
         }
         $container->setParameter('nijens_sculpin_webpack_encore.assets.manifest', $manifestFile);
 
