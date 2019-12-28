@@ -25,8 +25,10 @@
             <argument>%nijens_sculpin_webpack_encore.assets.manifest%</argument>
         </service>
 
-        <service id="nijens_sculpin_webpack_encore.event_subscriber.reset_services" class="Nijens\SculpinWebPackEncoreBundle\EventSubscriber\ResetServicesEventSubscriber">
+        <service id="nijens_sculpin_webpack_encore.event_subscriber.reset_services" class="Nijens\SculpinWebpackEncoreBundle\EventSubscriber\ResetServicesEventSubscriber">
             <argument type="tagged_iterator" tag="kernel.reset"/>
+
+            <tag name="kernel.event_subscriber"/>
         </service>
 
         <service id="nijens_sculpin_webpack_encore.twig.extension.assets" class="Symfony\Bridge\Twig\Extension\AssetExtension">
